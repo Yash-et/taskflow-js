@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TaskFlow is a simple and clean task management application.">
+    <title>TaskFlow - Manage Your Tasks</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="app-container">
+
+        <aside class="sidebar">
+            <div class="brand">
+                <span class="brand-icon">✓</span>
+                <span>TaskFlow</span>
+            </div>
+
+            <p class="nav-heading">MENU</p>
+
+            <nav class="navigation">
+                <a href="#" class="nav-link active">
+                    <span>▦</span> All Tasks
+                </a>
+                <a href="#" class="nav-link">
+                    <span>◷</span> Today
+                </a>
+                <a href="#" class="nav-link">
+                    <span>☆</span> Important
+                </a>
+                <a href="#" class="nav-link">
+                    <span>✓</span> Completed
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>Stay organized.</p>
+                <span>One task at a time.</span>
+            </div>
+        </aside>
+
+        <main class="main-content">
+
+            <header class="topbar">
+                <div>
+                    <p class="greeting">YOUR WORKSPACE</p>
+                    <h1>My Tasks</h1>
+                </div>
+
+                <div class="profile">
+                    <div class="avatar">Y</div>
+                    <span>My Workspace</span>
+                </div>
+            </header>
+
+            <section class="welcome-section">
+                <div>
+                    <p class="date-label">YOUR PRODUCTIVITY SPACE</p>
+                    <h2>Make today count.</h2>
+                    <p class="welcome-description">
+                        Organize your work and focus on what matters.
+                    </p>
+                </div>
+                <div class="welcome-icon">✦</div>
+            </section>
+
+            <section class="stats-grid">
+                <article class="stat-card">
+                    <p>Total Tasks</p>
+                    <h3>8</h3>
+                    <span>All your tasks</span>
+                </article>
+
+                <article class="stat-card">
+                    <p>Completed</p>
+                    <h3>3</h3>
+                    <span>Tasks finished</span>
+                </article>
+
+                <article class="stat-card">
+                    <p>Pending</p>
+                    <h3>5</h3>
+                    <span>Still in progress</span>
+                </article>
+            </section>
+
+            <section class="tasks-section">
+
+                <div class="section-header">
+                    <div>
+                        <h2>Task Overview</h2>
+                        <p>Keep track of your daily activities.</p>
+                    </div>
+
+                    <button class="add-task-btn" type="button">
+                        + Add New Task
+                    </button>
+                </div>
+
+                <div class="toolbar">
+                    <input
+                        type="search"
+                        class="search-input"
+                        placeholder="Search tasks..."
+                        aria-label="Search tasks"
+                    >
+
+                    <select class="filter-select" aria-label="Filter tasks">
+                        <option>All Tasks</option>
+                        <option>Pending</option>
+                        <option>Completed</option>
+                    </select>
+                </div>
+
+                <div class="task-list">
+
+                    <article class="task-item">
+                        <div class="task-check"></div>
+                        <div class="task-details">
+                            <h3>Complete JavaScript fundamentals</h3>
+                            <p>Practice variables, functions and arrays.</p>
+                        </div>
+                        <span class="priority high">High</span>
+                        <span class="task-date">Today</span>
+                    </article>
+
+                    <article class="task-item">
+                        <div class="task-check"></div>
+                        <div class="task-details">
+                            <h3>Build TaskFlow interface</h3>
+                            <p>Complete the initial HTML and CSS layout.</p>
+                        </div>
+                        <span class="priority medium">Medium</span>
+                        <span class="task-date">Today</span>
+                    </article>
+
+                    <article class="task-item">
+                        <div class="task-check"></div>
+                        <div class="task-details">
+                            <h3>Review Git and GitHub workflow</h3>
+                            <p>Practice commits and repository management.</p>
+                        </div>
+                        <span class="priority low">Low</span>
+                        <span class="task-date">Tomorrow</span>
+                    </article>
+
+                    <article class="task-item completed-task">
+                        <div class="task-check checked">✓</div>
+                        <div class="task-details">
+                            <h3>Set up development environment</h3>
+                            <p>Prepare VS Code and project structure.</p>
+                        </div>
+                        <span class="priority low">Low</span>
+                        <span class="task-date">Completed</span>
+                    </article>
+
+                </div>
+            </section>
+
+            <footer class="footer">
+                <p>TaskFlow © 2026 · Built to keep you focused.</p>
+            </footer>
+
+        </main>
+    </div>
+</body>
+</html>
