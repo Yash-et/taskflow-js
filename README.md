@@ -29,6 +29,7 @@ No additional dependencies are required.
 ## Project Status
 
 Currently under development.
+On hold for now, will continue soon enough.
 
 ## License
 
