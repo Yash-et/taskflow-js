@@ -1,5 +1,4 @@
-
-# TaskFlow - To-Do Manager
+# TaskFlow: To-Do Manager
 
 TaskFlow is a clean and responsive task management application built with HTML, CSS, and Vanilla JavaScript.
 
