@@ -44,6 +44,11 @@ TaskFlow is being developed incrementally, with new functionality, UI improvemen
 - UI refinements and screenshots
 - Final testing and documentation
 
+## Sample Working Pics
+
+<img width="1920" height="1080" alt="Screenshot (6983)" src="https://github.com/user-attachments/assets/77fcfd80-8f02-4377-8b7b-e62ef538575c" />
+<h3 align="center">TaskFlow app </h3>
+
 ## License
 
 MIT
