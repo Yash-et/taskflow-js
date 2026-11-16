@@ -30,7 +30,7 @@ No additional dependencies are required.
 Currently under development.
 On hold for now, will continue soon enough.
 For now, urgent work is being prioritised.
-This work will be updated by today.
+This work will be updated by today, with screenshots as priority.
 
 ## License
 
