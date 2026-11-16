@@ -1,6 +1,6 @@
 "use strict";
 
-// TaskFlow - Task creation and rendering
+// TaskFlow - Task creation, completion and deletion
 
 const addTaskButton = document.querySelector(".add-task-btn");
 const taskList = document.querySelector(".task-list");
@@ -45,17 +45,12 @@ if (taskList) {
     taskList.before(taskForm);
 }
 
-// Read the existing dashboard tasks.
-function getExistingTaskCount() {
-    return taskList ? taskList.querySelectorAll(".task-item").length : 0;
-}
-
 // Create a task object.
 function createTask(title, priority) {
     return {
-        id: Date.now(),
-        title: title,
-        priority: priority,
+        id: Date.now() + Math.random(),
+        title,
+        priority,
         completed: false
     };
 }
@@ -63,37 +58,60 @@ function createTask(title, priority) {
 // Render one task in the dashboard.
 function renderTask(task) {
     const taskElement = document.createElement("div");
+
     taskElement.className = "task-item";
     taskElement.dataset.taskId = task.id;
+
+    if (task.completed) {
+        taskElement.classList.add("completed");
+    }
 
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.className = "task-check";
     checkbox.checked = task.completed;
-    checkbox.setAttribute("aria-label", `Mark ${task.title} as completed`);
+    checkbox.setAttribute(
+        "aria-label",
+        `Mark ${task.title} as completed`
+    );
 
     const details = document.createElement("div");
     details.className = "task-details";
 
-    const title = document.createElement("span");
+    const title = document.createElement("h3");
     title.textContent = task.title;
+
+    const description = document.createElement("p");
+    description.textContent = task.description || "";
 
     const date = document.createElement("span");
     date.className = "task-date";
-    date.textContent = "Added just now";
+    date.textContent = task.date || "Added just now";
 
-    details.append(title, date);
+    details.append(title, description, date);
 
     const priority = document.createElement("span");
     priority.className = `priority priority-${task.priority}`;
     priority.textContent =
         task.priority.charAt(0).toUpperCase() + task.priority.slice(1);
 
-    taskElement.append(checkbox, details, priority);
+    const deleteButton = document.createElement("button");
+    deleteButton.type = "button";
+    deleteButton.className = "delete-task-btn";
+    deleteButton.textContent = "Delete";
+    deleteButton.setAttribute("aria-label", `Delete ${task.title}`);
+
+    taskElement.append(
+        checkbox,
+        details,
+        priority,
+        deleteButton
+    );
+
     taskList.appendChild(taskElement);
 }
 
-// Update the dashboard statistics.
+// Update dashboard statistics.
 function updateStatistics() {
     if (statsCards.length < 3 || !taskList) {
         return;
@@ -116,7 +134,7 @@ function updateStatistics() {
             "h2, h3, .stat-number, .stat-value, .stat-count, strong"
         );
 
-        if (valueElement && values[index] !== undefined) {
+        if (valueElement) {
             valueElement.textContent = values[index];
         }
     });
@@ -133,21 +151,19 @@ function toggleTaskForm(show) {
     }
 }
 
-// Open the form.
+// Open the task form.
 if (addTaskButton && taskList) {
     addTaskButton.addEventListener("click", () => {
         toggleTaskForm(true);
     });
 }
 
-// Close the form.
-const cancelButton = taskForm.querySelector(".cancel-task-btn");
-
-cancelButton.addEventListener("click", () => {
+// Cancel task creation.
+taskForm.querySelector(".cancel-task-btn").addEventListener("click", () => {
     toggleTaskForm(false);
 });
 
-// Handle task submission.
+// Add a new task.
 taskForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
@@ -171,7 +187,66 @@ taskForm.addEventListener("submit", (event) => {
     toggleTaskForm(false);
 });
 
-// Initialize dashboard statistics.
+// Handle completion and deletion using event delegation.
+if (taskList) {
+    taskList.addEventListener("change", (event) => {
+        if (!event.target.matches(".task-check")) {
+            return;
+        }
+
+        const taskElement = event.target.closest(".task-item");
+
+        if (!taskElement) {
+            return;
+        }
+
+        const taskId = taskElement.dataset.taskId;
+
+        const task = tasks.find(
+            (item) => String(item.id) === taskId
+        );
+
+        if (task) {
+            task.completed = event.target.checked;
+        }
+
+        taskElement.classList.toggle(
+            "completed",
+            event.target.checked
+        );
+
+        updateStatistics();
+    });
+
+    taskList.addEventListener("click", (event) => {
+        const deleteButton = event.target.closest(".delete-task-btn");
+
+        if (!deleteButton) {
+            return;
+        }
+
+        const taskElement = deleteButton.closest(".task-item");
+
+        if (!taskElement) {
+            return;
+        }
+
+        const taskId = taskElement.dataset.taskId;
+
+        const taskIndex = tasks.findIndex(
+            (item) => String(item.id) === taskId
+        );
+
+        if (taskIndex !== -1) {
+            tasks.splice(taskIndex, 1);
+        }
+
+        taskElement.remove();
+        updateStatistics();
+    });
+}
+
+// Initialize statistics.
 updateStatistics();
 
 console.log("TaskFlow is ready!");

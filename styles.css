@@ -623,3 +623,42 @@ button, input, select {
         flex: 1;
     }
 }
+
+/* Task completion */
+
+.task-item.completed .task-details h3 {
+    text-decoration: line-through;
+    color: #9993a6;
+}
+
+.task-item.completed {
+    opacity: 0.75;
+}
+
+/* Delete task button */
+
+.delete-task-btn {
+    padding: 7px 12px;
+    border: none;
+    border-radius: 7px;
+    background: #fde8eb;
+    color: #c34454;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.delete-task-btn:hover {
+    background: #fbd2d8;
+}
+
+.task-item {
+    gap: 12px;
+}
+
+@media (max-width: 650px) {
+    .delete-task-btn {
+        padding: 7px 9px;
+    }
+}

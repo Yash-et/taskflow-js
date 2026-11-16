@@ -28,7 +28,22 @@ No additional dependencies are required.
 
 ## Project Status
 
-Currently under development.
+**Currently under active development.**
+
+TaskFlow is being developed incrementally, with new functionality, UI improvements, and documentation updates being added as milestones are completed.
+
+### Completed
+- Initial responsive dashboard UI
+- Dynamic task creation and rendering
+- Task priority selection
+- Task completion and deletion
+- Live dashboard statistics
+
+### Upcoming
+- Task filtering and search
+- LocalStorage persistence
+- UI refinements and screenshots
+- Final testing and documentation
 
 ## License
 
