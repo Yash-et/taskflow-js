@@ -12,7 +12,6 @@ const statsCards = document.querySelectorAll(".stat-card");
 const searchInput = document.querySelector(".search-input");
 const priorityFilter = document.querySelector(".filter-select");
 const navigationLinks = document.querySelectorAll(".nav-link");
-
 // ==========================================
 // 1. Initialize the task data model
 // ==========================================
@@ -55,8 +54,39 @@ function loadExistingTasks() {
     );
 }
 
+const STORAGE_KEY = "taskflow_tasks";
+
+function loadTasks() {
+    try {
+        const savedTasks = localStorage.getItem(STORAGE_KEY);
+
+        if (savedTasks !== null) {
+            const parsedTasks = JSON.parse(savedTasks);
+
+            if (Array.isArray(parsedTasks)) {
+                return parsedTasks;
+            }
+
+            console.warn("Invalid saved tasks. Loading sample tasks.");
+        }
+    } catch (error) {
+        console.error("Could not load saved tasks:", error);
+    }
+
+    return loadExistingTasks();
+}
+
+function saveTasks() {
+    try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+    } catch (error) {
+        console.error("Could not save tasks:", error);
+    }
+}
+
 // All tasks now live in one JavaScript array.
-const tasks = loadExistingTasks();
+const tasks = loadTasks();
+saveTasks();
 
 // Current navigation filter.
 let activeCategory = "all";
@@ -336,7 +366,7 @@ taskForm.addEventListener("submit", (event) => {
     const newTask = createTask(title, description, priority);
 
     tasks.push(newTask);
-
+    saveTasks();
     toggleTaskForm(false);
     renderTasks();
 });
@@ -360,6 +390,7 @@ if (taskList) {
 
         if (task) {
             task.completed = event.target.checked;
+            saveTasks();
             renderTasks();
         }
     });
@@ -380,6 +411,7 @@ if (taskList) {
 
         if (taskIndex !== -1) {
             tasks.splice(taskIndex, 1);
+            saveTasks();
             renderTasks();
         }
     });
