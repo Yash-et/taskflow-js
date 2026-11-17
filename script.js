@@ -10,6 +10,28 @@ const searchInput = document.querySelector(".search-input");
 const priorityFilter = document.querySelector(".filter-select");
 const navigationLinks = document.querySelectorAll(".nav-link");
 
+// Random application background
+function setRandomBackground() {
+    const backgrounds = [
+        "#E8EAFE",
+        "#DDF5F0",
+        "#FFF0DC",
+        "#FCE4EC",
+        "#E0F2FE",
+        "#F0E6FF",
+        "#E6F4EA",
+        "#FFF3E0"
+    ];
+
+    const randomIndex = Math.floor(
+        Math.random() * backgrounds.length
+    );
+
+    document.documentElement.style.setProperty(
+        "--app-background",
+        backgrounds[randomIndex]
+    );
+}
 // 1. Initialize the task data model
 
 // Import existing sample tasks from HTML before clearing the list.
@@ -452,5 +474,6 @@ navigationLinks.forEach((link) => {
 // 12. Initialize TaskFlow
 
 // All original HTML tasks are now rendered from JavaScript.
+setRandomBackground();
 renderTasks();
 console.log("TaskFlow is ready!");

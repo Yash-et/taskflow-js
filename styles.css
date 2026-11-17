@@ -18,8 +18,9 @@
 
 body {
     font-family: 'DM Sans', sans-serif;
-    background: var(--background);
+    background: var(--app-background, #f7f8fc);
     color: var(--text);
+    transition: background 0.5s ease;
 }
 
 button, input, select {
