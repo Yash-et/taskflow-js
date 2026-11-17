@@ -1,8 +1,5 @@
 "use strict";
-
-// ==========================================
 // TaskFlow - Complete Task Management System
-// ==========================================
 
 // DOM elements
 const addTaskButton = document.querySelector(".add-task-btn");
@@ -12,9 +9,8 @@ const statsCards = document.querySelectorAll(".stat-card");
 const searchInput = document.querySelector(".search-input");
 const priorityFilter = document.querySelector(".filter-select");
 const navigationLinks = document.querySelectorAll(".nav-link");
-// ==========================================
+
 // 1. Initialize the task data model
-// ==========================================
 
 // Import existing sample tasks from HTML before clearing the list.
 function loadExistingTasks() {
@@ -91,9 +87,7 @@ saveTasks();
 // Current navigation filter.
 let activeCategory = "all";
 
-// ==========================================
 // 2. Create the task form
-// ==========================================
 
 const taskForm = document.createElement("form");
 taskForm.className = "add-task-form";
@@ -142,9 +136,7 @@ if (taskList) {
     taskList.before(taskForm);
 }
 
-// ==========================================
 // 3. Create and render tasks
-// ==========================================
 
 function createTask(title, description, priority) {
     return {
@@ -212,9 +204,7 @@ function renderTask(task) {
     return taskElement;
 }
 
-// ==========================================
 // 4. Filter and display tasks
-// ==========================================
 
 function getPriorityFilter() {
     if (!priorityFilter) {
@@ -290,9 +280,7 @@ function renderTasks() {
     updateStatistics();
 }
 
-// ==========================================
 // 5. Update dashboard statistics
-// ==========================================
 
 function updateStatistics() {
     const total = tasks.length;
@@ -316,9 +304,7 @@ function updateStatistics() {
     });
 }
 
-// ==========================================
 // 6. Show and hide task form
-// ==========================================
 
 function toggleTaskForm(show) {
     taskForm.hidden = !show;
@@ -343,9 +329,7 @@ taskForm.querySelector(".cancel-task-btn").addEventListener(
     }
 );
 
-// ==========================================
 // 7. Add new tasks
-// ==========================================
 
 taskForm.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -371,9 +355,7 @@ taskForm.addEventListener("submit", (event) => {
     renderTasks();
 });
 
-// ==========================================
 // 8. Complete and delete tasks
-// ==========================================
 
 if (taskList) {
     taskList.addEventListener("change", (event) => {
@@ -417,25 +399,19 @@ if (taskList) {
     });
 }
 
-// ==========================================
 // 9. Search functionality
-// ==========================================
 
 if (searchInput) {
     searchInput.addEventListener("input", renderTasks);
 }
 
-// ==========================================
 // 10. Priority filter
-// ==========================================
 
 if (priorityFilter) {
     priorityFilter.addEventListener("change", renderTasks);
 }
 
-// ==========================================
 // 11. Sidebar navigation
-// ==========================================
 
 navigationLinks.forEach((link) => {
     link.addEventListener("click", (event) => {
@@ -465,11 +441,8 @@ navigationLinks.forEach((link) => {
     });
 });
 
-// ==========================================
 // 12. Initialize TaskFlow
-// ==========================================
 
 // All original HTML tasks are now rendered from JavaScript.
 renderTasks();
-
 console.log("TaskFlow is ready!");
