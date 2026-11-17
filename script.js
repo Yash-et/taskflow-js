@@ -151,14 +151,10 @@ function createTask(title, description, priority) {
 
 function renderTask(task) {
     const taskElement = document.createElement("article");
-
-    taskElement.className = "task-item";
+    taskElement.className = task.completed
+        ? "task-item completed"
+        : "task-item";
     taskElement.dataset.taskId = task.id;
-
-    if (task.completed) {
-        taskElement.classList.add("completed");
-    }
-
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.className = "task-check";
@@ -177,27 +173,32 @@ function renderTask(task) {
     const description = document.createElement("p");
     description.textContent = task.description;
 
-    const date = document.createElement("span");
-    date.className = "task-date";
-    date.textContent = task.completed ? "Completed" : task.dateLabel;
-
-    details.append(title, description, date);
+    details.append(title, description);
 
     const priority = document.createElement("span");
     priority.className = `priority ${task.priority}`;
     priority.textContent =
-        task.priority.charAt(0).toUpperCase() + task.priority.slice(1);
+        task.priority.charAt(0).toUpperCase() +
+        task.priority.slice(1);
+
+    const date = document.createElement("span");
+    date.className = "task-date";
+    date.textContent = task.dateLabel || "";
 
     const deleteButton = document.createElement("button");
     deleteButton.type = "button";
     deleteButton.className = "delete-task-btn";
-    deleteButton.textContent = "Delete";
-    deleteButton.setAttribute("aria-label", `Delete ${task.title}`);
+    deleteButton.textContent = "×";
+    deleteButton.setAttribute(
+        "aria-label",
+        `Delete ${task.title}`
+    );
 
     taskElement.append(
         checkbox,
         details,
         priority,
+        date,
         deleteButton
     );
 
@@ -392,6 +393,13 @@ if (taskList) {
         );
 
         if (taskIndex !== -1) {
+            const task = tasks[taskIndex];
+            const confirmed = window.confirm(
+                `Are you sure you want to delete "${task.title}"?`
+            );
+            if (!confirmed) {
+                return;
+            }
             tasks.splice(taskIndex, 1);
             saveTasks();
             renderTasks();
