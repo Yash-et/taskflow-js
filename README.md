@@ -73,6 +73,14 @@ The initial TaskFlow prototype is complete, with core task management functional
 
 <h3 align="center">TaskFlow App</h3>
 
+<h3 align="center">Backgrounds </h3>
+
+<img width="1920" height="1080" alt="Screenshot (6988)" src="https://github.com/user-attachments/assets/d288422f-bdd2-4e2b-a706-b3377db93ab1" />
+<h3 align="center">1</h3>
+
+<img width="1920" height="1080" alt="Screenshot (6989)" src="https://github.com/user-attachments/assets/4fa23078-6a85-4a4d-b6e0-4672b0b2ea93" />
+<h3 align="center">2</h3>
+
 ## License
 
 MIT
