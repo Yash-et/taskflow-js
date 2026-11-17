@@ -790,3 +790,92 @@ a:focus-visible {
         scroll-behavior: auto !important;
     }
 }
+/* M6 - Final Responsive Refinements */
+
+/* Tablet and smaller laptops */
+@media (max-width: 900px) {
+    .topbar h1 {
+        font-size: 23px;
+    }
+
+    .main-content {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+}
+
+/* Mobile devices */
+@media (max-width: 650px) {
+    .topbar {
+        gap: 12px;
+    }
+
+    .topbar h1 {
+        font-size: 21px;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .toolbar {
+        gap: 10px;
+    }
+
+    .search-input {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .filter-select {
+        min-width: 0;
+    }
+
+    .task-item {
+        padding: 13px;
+    }
+
+    .task-details p {
+        overflow-wrap: anywhere;
+    }
+
+    .task-date {
+        width: auto;
+    }
+
+    .add-task-form {
+        padding: 15px;
+    }
+
+    .form-group {
+        min-width: 100%;
+    }
+
+    .form-actions {
+        width: 100%;
+    }
+
+    .form-actions button {
+        flex: 1;
+    }
+}
+
+/* Very small phones */
+@media (max-width: 380px) {
+    .main-content {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .welcome-section {
+        padding: 18px 15px;
+    }
+
+    .task-item {
+        gap: 9px;
+    }
+}

@@ -101,12 +101,19 @@
                 <div class="toolbar">
                     <input
                         type="search"
+                        id="task-search"
+                        name="task-search"
                         class="search-input"
                         placeholder="Search tasks..."
                         aria-label="Search tasks"
                     >
 
-                    <select class="filter-select" aria-label="Filter tasks by priority">
+                    <select 
+                        id="priority-filter"
+                        name="priority-filter"
+                        class="filter-select" 
+                        aria-label="Filter tasks by priority"
+                    >
                         <option value="all">All Priorities</option>
                         <option value="high">High</option>
                         <option value="medium">Medium</option>
